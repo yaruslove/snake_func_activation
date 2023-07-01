@@ -1,0 +1,25 @@
+class Net(torch.nn.Module):
+    def __init__(self, input_feature, n_hidden_neurons):
+        super().__init__()
+        # YOUR CODE HERE
+        self.fc1 = nn.Linear(input_feature, 512)
+        self.act_relu = nn.ReLU() 
+        self.fc2 = nn.Linear(512, 64)
+        self.fc3 = nn.Linear(64, 8)
+        self.fc4 = nn.Linear(8, 1)
+        pass
+
+    def forward(self, x):
+        x = self.fc1(x)
+        x = self.act_relu(x)
+        x = self.fc2(x)
+        x = self.act_relu(x)
+        x = self.fc3(x)
+        x = self.act_relu(x)
+        x = self.fc4(x)
+        return x
+
+
+def loss(pred, target):
+    squares = (pred - target)**2
+    return squares.mean()
