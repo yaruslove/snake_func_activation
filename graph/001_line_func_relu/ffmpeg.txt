@@ -1,0 +1,1 @@
+ffmpeg -framerate 1 -pattern_type glob -i f{pth}/*.png -c:v libx264
